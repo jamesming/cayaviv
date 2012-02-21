@@ -52,24 +52,11 @@ class Main extends CI_Controller {
 	public function add_asset(){
 
 		$input_array = array(
-			'size-class' => 'span3',
+			'size-class' => 'span5',
 			'inputs' => array(
 			
-				array('input_name'=>'project', 'type' => 'text', 'label' => 'Project', 'placeholder' => ''),
-				array('input_name'=>'description', 'type' => 'textarea', 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
-				array('input_name'=>'client', 'type' => 'text', 'label' => 'Client', 'placeholder' => ''),
-				array('input_name'=>'date', 'type' => 'text', 'label' => 'Date', 'placeholder' => ''),
-				array('input_name'=>'fileInput', 'type' => 'file', 'label' => 'File Input', 'placeholder' => ''),
-				array(
-						'input_name'=>'sports', 
-						'type' => 'select', 
-						'label' => 'Sports',
-						'options' => array(
-								array('value' => '1','text' => 'football'),
-								array('value' => '2','text' => 'soccer'),
-								array('value' => '3','text' => 'baseball'),
-						)
-				)
+				array('input_name'=>'description', 'type' => 'textarea', 'label' => 'Description', 'placeholder' => 'What do you want?&nbsp;&nbsp;Why are you setting this specific intention?', 'rows' =>15),
+		
 			)
 		);
 		

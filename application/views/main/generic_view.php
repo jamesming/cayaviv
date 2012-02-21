@@ -289,7 +289,7 @@
 		};
 		
 		
-		$('#fancyZoom_div').setFancyZoomWindowSize(420, 510)
+		$('#fancyZoom_div').setFancyZoomWindowSize(610, 460)
 		
 		
 		

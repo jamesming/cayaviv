@@ -28,7 +28,7 @@
 		<div  class=' container' >
 			
 			<div>
-					<legend >Add Asset <?php echo $data['record']   ?></legend>
+					<legend >Intentions for <?php echo $data['record']   ?></legend>
 			</div>
 			
 			
