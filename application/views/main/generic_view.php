@@ -70,17 +70,17 @@
 				  box-shadow: 0 0 6px #dbc59e;	
 				}	
 						.square{
-						background-image: url("http://localhost/cayaviv/images/HeartSeedsdiagramBWcopy.jpg");
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramBWcopy.jpg");
 						height: 140px;
 						width: 140px;
 						}				
 						.square:hover{
-						background-image: url("http://localhost/cayaviv/images/HeartSeedsdiagramcopy.jpg");
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramcopy.jpg");
 						height: 140px;
 						width: 140px;
 						}
 						.square:active{
-						background-image: url("http://localhost/cayaviv/images/HeartSeedsdiagramPalecopy.jpg");
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramPalecopy.jpg");
 						height: 140px;
 						width: 140px;
 						}
