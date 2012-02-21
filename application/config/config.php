@@ -25,16 +25,6 @@ if( $_SERVER['HTTP_HOST'] == 'jamesming.whsites.net' ){
 	$config['base_url']	= "http://jamesming.whsites.net/cayaviv";	
 }elseif( $_SERVER['HTTP_HOST'] == '127.0.0.1' ){
 	$config['base_url']	= "http://127.0.0.1/cayaviv";
-}elseif( $_SERVER['HTTP_HOST'] == '192.168.1.104' ){
-	$config['base_url']	= "http://192.168.1.104/cayaviv";
-}elseif( $_SERVER['HTTP_HOST'] == '192.168.1.103' ){
-	$config['base_url']	= "http://192.168.1.103/cayaviv";
-}elseif( $_SERVER['HTTP_HOST'] == 'localhost' ){
-	$config['base_url']	= "http://localhost/cayaviv";
-}elseif( $_SERVER['HTTP_HOST'] == 'www.cayaviv.me' ){
-	$config['base_url']	= "http://www.cayaviv.me";
-}elseif( $_SERVER['HTTP_HOST'] == 'cayaviv.me' ){
-	$config['base_url']	= "http://cayaviv.me";
 };
 
 	
