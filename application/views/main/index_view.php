@@ -1,158 +1,309 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<?php     	$this->load->view('header/blueprint_css.php');  ?>
-<style>
-	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/<?php echo ( isset( $data['users']['backgrounds']['images'][0]) ? $data['users']['backgrounds']['images'][0]:'0' )    ?>/image.jpg);
-  background-position:center 0px;
-  background-repeat:no-repeat;/*
-  -webkit-background-size:1280px 1024px;
-  background-size:1280px 1024px;*/
-	}
-	.top-right-rounded{
-		border-top-right-radius: 6px;
-		-moz-border-radius-topright: 6px;
-		-webkit-border-top-right-radius: 6px;	
-	}
-	.transparent{
-			/* Fallback for web browsers that don't support RGBa */
-			background-color: rgb(0, 0, 0);
-			/* RGBa with 0.6 opacity */
-			background-color: rgba(0, 0, 0, 0.3);
-			<?php if( $this->tools->browserIsExplorer() ){?>
-				background: transparent; 
-			<?php } ?>
-			<?php     
-			/*
-			http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/ 
-			*/
-			?>
-		}
-	.rounded{
-		border-top-left-radius: 6px;
-		border-top-right-radius: 6px;
-		-moz-border-radius-topleft: 6px;
-		-moz-border-radius-topright: 6px;
-		-webkit-border-top-right-radius: 6px;
-		-webkit-border-top-left-radius: 6px;
-		border-bottom-left-radius: 6px;
-		border-bottom-right-radius: 6px;
-		-moz-border-radius-bottomleft: 6px;
-		-moz-border-radius-bottomright: 6px;
-		-webkit-border-bottom-right-radius: 6px;
-		-webkit-border-bottom-left-radius: 6px;
-	}
-	.float_left{
-	float:left;	
-	}
-	.float_right{
-	float:right;	
-	}
-	.clearfix{
-	clear:both;	
-	}
-	
 
-	
-	div.container{
-	min-height:30px;	
-	border:0px solid gray;
-	}
-	
+<!DOCTYPE html>
 
-</style>
+<html lang="en">
 
+  <head>
 
-<script type="text/javascript" 
-        src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
- 
-  google.load("jquery", "1.4.2");
- 	google.load("jqueryui", "1.8.16");
+    <meta charset="utf-8">
 
-</script>
+    <title>Cayaviv</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="">
+
+    <meta name="author" content="">
 
 
 
-	<link rel="stylesheet" href="<?php echo  base_url();   ?>js/jquery-ui/themes/base/jquery.ui.all.css"> 
-	<script src="<?php echo  base_url();   ?>js/external/jquery.bgiframe-2.1.2.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.core.min.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.widget.min.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.mouse.min.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.draggable.min.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.position.min.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.resizable.min.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.dialog.min.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/easing/jquery.easing.1.1.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/cufon.js"></script> 
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 
-</head>
+    <!--[if lt IE 9]>
 
-<html>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
-<body>
-	
-	<div class='container '  >
+    <![endif]-->
 
-					<div   style='
-						font-size:33px;
-						font-weight:bold;
-						text-align:center;
-						margin-top:100px;
-						'  >
-						PONGO SAMPLE HTML5 PLAYER
+
+
+    <!-- Le styles -->
+
+    <link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <style>
+
+      body {
+				background: url(http://griddle.it/960-12-30) repeat-y center top;  
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+
+      }
+      .float_left{
+      float:left;	
+      }
+      .clearfix{
+      clear:both;	
+      }
+			.yellow{
+			background:yellow;	
+			}
+			.orange{
+			background:orange;	
+			}		
+			.rounded{
+					border-top-left-radius: 6px;
+					border-top-right-radius: 6px;
+					-moz-border-radius-topleft: 6px;
+					-moz-border-radius-topright: 6px;
+					-webkit-border-top-right-radius: 6px;
+					-webkit-border-top-left-radius: 6px;
+					border-bottom-left-radius: 6px;
+					border-bottom-right-radius: 6px;
+					-moz-border-radius-bottomleft: 6px;
+					-moz-border-radius-bottomright: 6px;
+					-webkit-border-bottom-right-radius: 6px;
+					-webkit-border-bottom-left-radius: 6px;
+				}
+				.shadowed{
+				  -webkit-box-shadow: 0 0 12px #dbc59e;
+				  -moz-box-shadow: 0 0 6px #dbc59e;
+				  box-shadow: 0 0 6px #dbc59e;	
+				}	
+						.square{
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramBWcopy.jpg");
+						height: 140px;
+						width: 140px;
+						}				
+						.square:hover{
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramcopy.jpg");
+						height: 140px;
+						width: 140px;
+						}
+						.square:active{
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramPalecopy.jpg");
+						height: 140px;
+						width: 140px;
+						}
+
+						.left-top{
+						background-position: -5px -5px;
+						background-repeat: no-repeat;    		
+						}
+						.middle-top{
+						background-position: -146px -5px;
+						background-repeat: no-repeat;    		
+						}
+						.right-top{
+						background-position: -287px -5px;
+						background-repeat: no-repeat;    		
+						}
+						.left-middle{
+						background-position: -5px -146px;
+						background-repeat: no-repeat;    		
+						}
+						.middle-middle{
+						background-position: -146px -146px;
+						background-repeat: no-repeat;    		
+						}
+						.right-middle{
+						background-position: -287px -146px;
+						background-repeat: no-repeat;    		
+						}
+						.left-bottom{
+						background-position: -5px -287px;
+						background-repeat: no-repeat;    		
+						}
+						.middle-bottom{
+						background-position: -146px -287px;
+						background-repeat: no-repeat;    		
+						}
+						.right-bottom{
+						background-position: -287px -287px;
+						background-repeat: no-repeat;    		
+						}						
+    </style>
+
+    <link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+
+
+    <!-- Le fav and touch icons -->
+
+    <link rel="shortcut icon" href="<?php  echo base_url()   ?>bootstrap/ico/favicon.ico">
+
+    <link rel="apple-touch-icon" href="<?php  echo base_url()   ?>bootstrap/ico/apple-touch-icon.png">
+
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php  echo base_url()   ?>bootstrap/ico/apple-touch-icon-72x72.png">
+
+    <link rel="apple-touch-icon" sizes="114x114" href="<?php  echo base_url()   ?>bootstrap/ico/apple-touch-icon-114x114.png">
+
+  </head>
+
+
+
+  <body>
+
+    	
+          <div id="navbar-example" class="navbar  navbar-fixed-top">
+
+            <div class="navbar-inner">
+
+              <div class="container" >
+
+                <a class="brand" href="#">Cayaviv</a>
+
+                <ul class="nav  pull-right ">
+
+                  
+			            <li class="dropdown">
+			
+			              <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account<b class="caret"></b></a>
+			
+			              <ul id="menu1" class="dropdown-menu">
+			
+			                <li><a href="#">Action</a></li>
+			
+			                <li><a href="#">Another action</a></li>
+			
+			                <li class="divider"></li>
+											<li><a href="#">Log Out</a></li>
+			
+			              </ul>
+			
+			            </li>                  
+                  
+                </ul>
+
+                
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+					<div class="container">
+					
+									<div  class='squares '   style='margin-left:100px;margin-top:100px'  >
+											<div  class='inside '  >
+											  		<div record=1 class=' left-top float_left' >
+											  			&nbsp;
+											  		</div>	
+											  		<div record=2 class='  middle-top float_left' >
+											  			&nbsp;
+											  		</div>
+											  		<div record=3  class='  right-top float_left' >
+											  			&nbsp;
+											  		</div>		  		
+											</div>
+											<div  class='inside  clearfix'  >
+											  		<div record=4  class='  left-middle float_left' >
+											  			&nbsp;
+											  		</div>	
+											  		<div record=5  class='  middle-middle float_left' >
+											  			&nbsp;
+											  		</div>
+											  		<div record=6  class='  right-middle float_left' >
+											  			&nbsp;
+											  		</div>		  		
+											</div>
+											<div  class='inside  clearfix'  >
+											  		<div record=7  class='  left-bottom float_left' >
+											  			&nbsp;
+											  		</div>	
+											  		<div record=8  class='  middle-bottom float_left' >
+											  			&nbsp;
+											  		</div>
+											  		<div record=9  class='  right-bottom float_left' >
+											  			&nbsp;
+											  		</div>		  		
+											</div>			
+									</div>
+					
+									
+					
+					
 					</div>
-				
-					<iframe  
-						id="results"   
-						name="results"
-						style='background:white;border:0px solid gray;width:0px;height:0px'  
-						border="1" 
-						frameborder="1" 
-						scrolling="auto" 
-						align="center" 
-						hspace="0" 
-						vspace="">
-					</iframe>
-					
-				
-					
-					
-					
-					<style>
-					#video_container{
-						width:640px;
-					}
-					</style>
-<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
-<script src="http://vjs.zencdn.net/c/video.js"></script>
-					<div  id='video_container'>
-							<video id="my_video_1" class="video-js vjs-default-skin" controls  
-							  preload="auto" width="640" height="400" poster="<?php  echo base_url()   ?>images/Pongo_Logo.png"
-							  data-setup="{}">
-							  <source src="<?php  echo base_url()   ?>images/pongo.mp4" type='video/mp4'>
-							</video>		
-					</div>
+	
+	
+					<div id="fancyZoom_div"  style='display:none;'  >
+						
+						<iframe   id="iframe_content_text" scrolling="no"  frameborder="0" src=""  >
+						    <p>Your browser does not support iframes.</p>
+						</iframe>
+					</div>			
+	
+	
+  </body>
 
-
-	</div>
-</body>
 </html>
 
-<script type="text/javascript" language="Javascript">
-	
-		$(document).ready(function() { 
-					$('#video_container').css({
-						'position':'absolute',
-						'left':($(window).width() / 2)-($('#video_container').width()/2),
-						'top':'150px'
+    <!-- Le javascript
+
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-transition.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-alert.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-modal.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-dropdown.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-scrollspy.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-tab.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-tooltip.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-popover.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-button.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-collapse.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-carousel.js"></script>
+
+    <script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-typeahead.js"></script>
+    
+		<?php $this->load->view('footer/fancy_zoom.php');    ?>
+
+	<script type="text/javascript" language="Javascript">
+		
+		
+		$.fn.setFancyZoomWindowSize = function(width, height) {
+					$(this).css({width:width+'px',height:height+'px'})
+					.children('iframe').css({
+							width:width+'px',
+							height:height+'px',
+							<?php     
+								echo ( $this->tools->browserIsExplorer()  ? "'margin-top':'40px'" :"" );
+							?>
 					})
+		};
+		
+		
+		$('#fancyZoom_div').setFancyZoomWindowSize(610, 460)
+		
+		
+		
+		$(document).ready(function() { 
+
+
+			$('.squares .inside div').css({
+					cursor:'pointer'
+			}).addClass('square').addClass('fancyZoom').attr('href','#fancyZoom_div')
+			
+			$('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+						  	$('#iframe_content_text').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset/'+$(this).attr('record'))
+			});
+			
 		});
-
-
-</script>
-
-
-
+	</script>
 
