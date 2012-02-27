@@ -25,6 +25,24 @@ class Query {
 		
 	}
 	
+	function get_groups_by_pk( $groupd_id ){
+		
+		$groups = $this->CI->my_database_model->select_from_table_left_join( 
+					$table = 'groups', 
+					$select_what = '*',    
+					$where_array = array(
+						'id' => $groupd_id
+					), 
+					$use_order = FALSE, 
+					$order_field = 'created', 
+					$order_direction = 'asc', 
+					$limit = -1
+					);
+		return  $this->CI->tools->object_to_array($groups);
+		
+	}
+	
+	
 	
 	function get_categories_with_or_without_projects(){
 		

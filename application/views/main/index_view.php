@@ -70,56 +70,49 @@
 				  box-shadow: 0 0 6px #dbc59e;	
 				}	
 						.square{
-						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramBWcopy.jpg");
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramcopy.jpg");
 						height: 140px;
 						width: 140px;
 						}				
 						.square:hover{
-						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramcopy.jpg");
-						height: 140px;
-						width: 140px;
-						}
-						.square:active{
 						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramPalecopy.jpg");
 						height: 140px;
 						width: 140px;
 						}
-
+						.square:active{
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramBWcopy.jpg");
+						height: 140px;
+						width: 140px;
+						}
+						.square .inside div{
+							background-repeat: no-repeat;    		
+						}
 						.left-top{
-						background-position: -5px -5px;
-						background-repeat: no-repeat;    		
+						background-position: -5px -5px;  		
 						}
 						.middle-top{
-						background-position: -146px -5px;
-						background-repeat: no-repeat;    		
+						background-position: -146px -5px;  		
 						}
 						.right-top{
-						background-position: -287px -5px;
-						background-repeat: no-repeat;    		
+						background-position: -287px -5px;  		
 						}
 						.left-middle{
-						background-position: -5px -146px;
-						background-repeat: no-repeat;    		
+						background-position: -5px -146px;  		
 						}
 						.middle-middle{
-						background-position: -146px -146px;
-						background-repeat: no-repeat;    		
+						background-position: -146px -146px;  		
 						}
 						.right-middle{
-						background-position: -287px -146px;
-						background-repeat: no-repeat;    		
+						background-position: -287px -146px;  		
 						}
 						.left-bottom{
-						background-position: -5px -287px;
-						background-repeat: no-repeat;    		
+						background-position: -5px -287px;  		
 						}
 						.middle-bottom{
-						background-position: -146px -287px;
-						background-repeat: no-repeat;    		
+						background-position: -146px -287px;  		
 						}
 						.right-bottom{
 						background-position: -287px -287px;
-						background-repeat: no-repeat;    		
 						}						
     </style>
 
@@ -187,35 +180,35 @@
 					
 									<div  class='squares '   style='margin-left:100px;margin-top:100px'  >
 											<div  class='inside '  >
-											  		<div record=1 class=' left-top float_left' >
+											  		<div group_id=1 class=' left-top float_left' >
 											  			&nbsp;
 											  		</div>	
-											  		<div record=2 class='  middle-top float_left' >
+											  		<div group_id=2 class='  middle-top float_left' >
 											  			&nbsp;
 											  		</div>
-											  		<div record=3  class='  right-top float_left' >
+											  		<div group_id=3  class='  right-top float_left' >
 											  			&nbsp;
 											  		</div>		  		
 											</div>
 											<div  class='inside  clearfix'  >
-											  		<div record=4  class='  left-middle float_left' >
+											  		<div group_id=4  class='  left-middle float_left' >
 											  			&nbsp;
 											  		</div>	
-											  		<div record=5  class='  middle-middle float_left' >
+											  		<div  group_id=0 class='  middle-middle float_left' >
 											  			&nbsp;
 											  		</div>
-											  		<div record=6  class='  right-middle float_left' >
+											  		<div group_id=5  class='  right-middle float_left' >
 											  			&nbsp;
 											  		</div>		  		
 											</div>
 											<div  class='inside  clearfix'  >
-											  		<div record=7  class='  left-bottom float_left' >
+											  		<div group_id=6  class='  left-bottom float_left' >
 											  			&nbsp;
 											  		</div>	
-											  		<div record=8  class='  middle-bottom float_left' >
+											  		<div group_id=7  class='  middle-bottom float_left' >
 											  			&nbsp;
 											  		</div>
-											  		<div record=9  class='  right-bottom float_left' >
+											  		<div group_id=8  class='  right-bottom float_left' >
 											  			&nbsp;
 											  		</div>		  		
 											</div>			
@@ -298,11 +291,13 @@
 
 			$('.squares .inside div').css({
 					cursor:'pointer'
-			}).addClass('square').addClass('fancyZoom').attr('href','#fancyZoom_div')
-			
-			$('.fancyZoom').css({cursor:'pointer'}).fancyZoom().click(function(event) {
-						  	$('#iframe_content_text').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset/'+$(this).attr('record'))
-			});
+			}).addClass('square').click(function(event) {
+						if( $(this).attr('group_id') !=0){
+							
+							document.location='<?php echo base_url()    ?>index.php/main/projects?group_id=' + $(this).attr('group_id');
+							
+						};
+			});	
 			
 		});
 	</script>

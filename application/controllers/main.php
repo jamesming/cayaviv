@@ -27,10 +27,13 @@ class Main extends CI_Controller {
 
 	public function projects(){
 
+		$groups = $this->query->get_groups_by_pk($this->input->get('group_id'));
+
 		$categories = $this->query->get_categories_with_or_without_projects();
 		
 		$data = array(
-			'categories' => $categories
+			'categories' => $categories,
+			'groups' => $groups
 		);
 
 		$this->load->view('main/projects_view',
@@ -89,17 +92,14 @@ class Main extends CI_Controller {
 
 
 function t(){
-$table = 'images';
+$table = 'groups';
 $this->my_database_model->create_generic_table($table );
 
 
 $fields_array = array(
-                      'user_id' => array(
-                                               'type' => 'int(11)'
-                                    ),
-                      'image_type_id' => array(
-                                               'type' => 'int(11)'
-                                    ),
+                      'name' => array(
+                                               'type' => 'int(11)')
+                                    
 
               ); 
               
