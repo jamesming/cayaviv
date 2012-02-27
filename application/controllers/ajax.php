@@ -100,13 +100,13 @@ class Ajax extends CI_Controller {
 		$asset_type_id = $this->input->get('asset_type_id');
 		$asset_id = $this->input->get('asset_id');
 		$project_id = $this->input->get('project_id');
-		$category_id = $this->input->get('category_id');
+		$groups_category_id = $this->input->get('groups_category_id');
 		
 		$this->my_database_model->update_table_where(
 					'projects', 
 					$where_array = array('id'=>$project_id),
 					$set_what_array = array(
-						'category_id' => $category_id
+						'groups_category_id' => $groups_category_id
 						)
 					);	
 		

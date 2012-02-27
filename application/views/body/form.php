@@ -242,18 +242,18 @@
 															if( $('#new').val() == 1){
 																
 																		/* NEW LISTING */
-																		var accordion_inner_listing_li = "<li 	 class='fancyZoom '  new='0'  href='#fancyZoom_div'  category_id='" + $('#category_id').val() +  "'  legend='<?php echo $data['legend']   ?>' project_id='<?php echo $data['input_array']['primary_key']    ?>' >" + $('#name').val() +  "</li>";
+																		var accordion_inner_listing_li = "<li 	 class='fancyZoom '  new='0'  href='#fancyZoom_div' groups_category_id='" + $('#groups_category_id').val() +  "'  legend='<?php echo $data['legend']   ?>' project_id='<?php echo $data['input_array']['primary_key']    ?>' >" + $('#name').val() +  "</li>";
 																		
-																		window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + ']').append(accordion_inner_listing_li);
+																		window.parent.$('.accordion-inner_listing[groups_category_id=' + $('#groups_category_id').val() + ']').append(accordion_inner_listing_li);
 																		
-																		window.parent.$('.accordion-inner_listing[category_id=' + $('#category_id').val() + '] li:last-child').attach_FancyZoom_AddAssetFormPopWindow();
+																		window.parent.$('.accordion-inner_listing[groups_category_id=' + $('#groups_category_id').val() + '] li:last-child').attach_FancyZoom_AddAssetFormPopWindow();
 
 																		/* MAKE LISTING COLLASPABLE */
-																		window.parent.$('.accordion-heading a[category_id=' + $('#category_id').val() + ']').attr('href','#collapse'+$('#category_id').val())
+																		window.parent.$('.accordion-heading a[groups_category_id=' + $('#groups_category_id').val() + ']').attr('href','#collapse'+$('#groups_category_id').val())
 																		
 																		/*  OPEN IT ACCORDIAN IF THIS IS FIRST IN CATEGORY */
 																		<?php if( $data['first_in_category'] == 1){?>
-																			window.parent.$('.accordion-heading a[category_id=' + $('#category_id').val() + ']').click();
+																			window.parent.$('.accordion-heading a[groups_category_id=' + $('#groups_category_id').val() + ']').click();
 																		<?php } ?>
 
 			

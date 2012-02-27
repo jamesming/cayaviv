@@ -242,7 +242,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									              </div>
 									              <div id="collapse<?php echo ( isset(  $groups_category['id'] ) ?  $groups_category['id'] :'' )   ?>" class="accordion-body collapse"   >
 									                <div class="accordion-inner">
-									                  <ol  class='accordion-inner_listing' category_id='<?php echo $groups_category['id']    ?>'    >
+									                  <ol  class='accordion-inner_listing' groups_category_id='<?php echo $groups_category['id']    ?>'    >
 									                  	
 									                  	
 									                  	<?php foreach( $groups_category['projects']  as  $project ){
