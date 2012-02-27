@@ -29,7 +29,9 @@ class Main extends CI_Controller {
 
 		$groups = $this->query->get_groups_by_pk($this->input->get('group_id'));
 
-		$categories = $this->query->get_categories_with_or_without_projects();
+		$categories = $this->query->get_categories_with_or_without_projects(
+			$group_id = $groups[0]['id']
+		);
 		
 		$data = array(
 			'categories' => $categories,

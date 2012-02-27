@@ -336,7 +336,6 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 			
 			$.fn.attach_FancyZoom_AddAssetFormPopWindow = function() {
 				$(this).fancyZoom().css({cursor:'pointer'}).click(function(event) {
-					alert($(this).attr('group_id'));
 					$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?group_id=' + $(this).attr('group_id') +  '&category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend')   + '&first_in_category=' + $(this).attr('first_in_category') )
 				});	
 				

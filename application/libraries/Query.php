@@ -44,7 +44,7 @@ class Query {
 	
 	
 	
-	function get_categories_with_or_without_projects(){
+	function get_categories_with_or_without_projects( $group_id ){
 		
 		$join_array = array(
 									'projects' => 'projects.category_id = categories.id'
@@ -54,7 +54,9 @@ class Query {
 		$categories_raw =  $this->CI->my_database_model->select_from_table_left_join( 
 					$table = 'categories', 
 					$select_what = 'categories.*, projects.id as project_id, projects.name as project_name ',    
-					$where_array = array(), 
+					$where_array = array(
+						'projects.group_id' => $group_id
+					), 
 					$use_order = TRUE, 
 					$order_field = 'categories.id, project_id', 
 					$order_direction = 'asc', 
