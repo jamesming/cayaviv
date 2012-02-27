@@ -25,13 +25,13 @@ class Query {
 		
 	}
 	
-	function get_groups_by_pk( $groupd_id ){
+	function get_groups_by_pk( $group_id ){
 		
 		$groups = $this->CI->my_database_model->select_from_table_left_join( 
 					$table = 'groups', 
 					$select_what = '*',    
 					$where_array = array(
-						'id' => $groupd_id
+						'id' => $group_id
 					), 
 					$use_order = FALSE, 
 					$order_field = 'created', 
@@ -42,23 +42,36 @@ class Query {
 		
 	}
 	
+	function get_categories(){
+		$categories = $this->CI->my_database_model->select_from_table( 
+					$table = 'categories', 
+					$select_what = '*',    
+					$where_array = array(), 
+					$use_order = FALSE, 
+					$order_field = 'created', 
+					$order_direction = 'asc', 
+					$limit = -1
+					);
+		return  $this->CI->tools->object_to_array($categories);
+	}
 	
-	
-	function get_categories_with_or_without_projects( $group_id ){
+	function get_groups_categories_with_or_without_projects( $user_id, $group_id  ){
 		
 		$join_array = array(
-									'projects' => 'projects.category_id = categories.id'
+									'projects' => 'projects.groups_category_id = groups_categories.id',
+									'categories' => 'groups_categories.category_id = categories.id'
 									);	
 											
 		
-		$categories_raw =  $this->CI->my_database_model->select_from_table_left_join( 
-					$table = 'categories', 
-					$select_what = 'categories.*, projects.id as project_id, projects.name as project_name ',    
+		$groups_categories_raw =  $this->CI->my_database_model->select_from_table_left_join( 
+					$table = 'groups_categories', 
+					$select_what = 'categories.name as category_name, groups_categories.*, projects.id as project_id, projects.name as project_name',    
 					$where_array = array(
-						'projects.group_id' => $group_id
+						'groups_categories.user_id' => $user_id,
+						'groups_categories.group_id' => $group_id,
 					), 
 					$use_order = TRUE, 
-					$order_field = 'categories.id, project_id', 
+					$order_field = 'groups_categories.id, project_id', 
 					$order_direction = 'asc', 
 					$limit = -1, 
 					$use_join = TRUE, 
@@ -66,14 +79,13 @@ class Query {
 					);
 					
 					
-		$categories_raw = $this->CI->tools->object_to_array($categories_raw);
+		$groups_categories_raw = $this->CI->tools->object_to_array($groups_categories_raw);
 		
-
 		$count = 0;
 
 		$previous_id = 0;
 		
-		foreach( $categories_raw  as $key =>  $category){
+		foreach( $groups_categories_raw  as $key =>  $category){
 			$count++;
 			if( $category['id'] == $previous_id || $previous_id == 0){
 
@@ -103,7 +115,7 @@ class Query {
 					$category_array['projects'] = $projects;	
 					unset($projects);							
 
-					$categories[] = $category_array;	
+					$groups_categories[] = $category_array;	
 
 					foreach( $category  as  $field => $value){
 		 
@@ -132,19 +144,19 @@ class Query {
 
 		}
 		
-		if( $count ==  count($categories_raw) ){
+		if( $count ==  count($groups_categories_raw) ){
 
 						$category_array['projects'] = ( isset($projects ) ? $projects : array());				
-						$categories[] = $category_array;
+						$groups_categories[] = $category_array;
 	
 		};
 
-		//echo '<pre>';print_r(  $categories   );echo '</pre>';  exit;	
+		//echo '<pre>';print_r(  $groups_categories   );echo '</pre>';  exit;	
 					
-		return $this->CI->tools->object_to_array( $categories );
+		return $this->CI->tools->object_to_array( $groups_categories );
 	}
 	
-	function get_projects_with_or_without_assets( $category_id ){
+	function get_projects_with_or_without_assets( $groups_category_id ){
 		
 		$join_array = array(
 									'assets' => 'assets.project_id = projects.id'
@@ -159,7 +171,7 @@ class Query {
 					assets.asset_type_id
 					',    
 				$where_array = array(
-					'category_id' => $category_id,
+					'groups_category_id' => $groups_category_id,
 				), 
 				$use_order = FALSE, 
 				$order_field = 'projects.created', 
@@ -224,9 +236,7 @@ class Query {
 		$previous_id = -1;
 			
 		$asset_types = array(
-			0 => 'XXXX',
-			1 => 'Video Stills',
-			2 => 'Videos',
+			1 => 'images'
 		);
 		
 

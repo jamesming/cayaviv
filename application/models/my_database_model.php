@@ -367,7 +367,6 @@ function select_from_table_left_join(
 	
 
 	if( count($or_where_array) > 0 ){
-		
 		foreach( $or_where_array as $field => $value ){
 			$this->db->or_where($field, $value);
 		}		

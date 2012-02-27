@@ -159,7 +159,7 @@
 																			        asset_id: <?php echo $inputs['asset_id']    ?>,
 																			        asset_type_id: <?php echo $inputs['asset_type_id']    ?>,
 																			        project_id:<?php echo $inputs['project_id']    ?>,
-																			        category_id:<?php echo $inputs['category_id']    ?>
+																			        groups_category_id:<?php echo $inputs['groups_category_id']    ?>
 																			    },
 																					allowedExtensions: ['<?php echo $inputs['allowable extensions']    ?>'],
 													                onComplete: function(id, fileName, responseJSON){

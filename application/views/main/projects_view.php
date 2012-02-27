@@ -219,16 +219,16 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 			         <div class="accordion" id="accordion2">
 												<?php 
 												
-												foreach( $data['categories']  as  $key => $category){?>
+												foreach( $data['groups_categories']  as  $key => $groups_category){?>
 													
 									            <div class="accordion-group">
 									              <div class="accordion-heading">
 									
-									                <a category_id='<?php echo $category['id']    ?>' legend='<?php echo $category['name']    ?>' class="accordion-toggle theList"  data-toggle="collapse" data-parent="#accordion2"   style='cursor:pointer'  
+									                <a groups_category_id='<?php echo $groups_category['id']    ?>' legend='<?php echo $groups_category['category_name']    ?>' class="accordion-toggle theList"  data-toggle="collapse" data-parent="#accordion2"   style='cursor:pointer'  
 									                	
-									                	<?php if( isset($category['projects'][0]['project_id']) &&  $category['projects'][0]['project_id'] != '' ){?>
+									                	<?php if( isset($groups_category['projects'][0]['project_id']) &&  $groups_category['projects'][0]['project_id'] != '' ){?>
 									                	
-									                			href="#collapse<?php echo $category['id']    ?>"
+									                			href="#collapse<?php echo $groups_category['id']    ?>"
 									                	
 									                	<?php }else{?>
 									                	
@@ -237,19 +237,19 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									                	<?php } ?>
 									                	
 									                >
-									                  <?php echo ( isset( $category['name']) ?$category['name'] :'' )    ?>
+									                  <?php echo $groups_category['category_name'];    ?>
 									                </a>
 									              </div>
-									              <div id="collapse<?php echo ( isset(  $category['id'] ) ?  $category['id'] :'' )   ?>" class="accordion-body collapse"   >
+									              <div id="collapse<?php echo ( isset(  $groups_category['id'] ) ?  $groups_category['id'] :'' )   ?>" class="accordion-body collapse"   >
 									                <div class="accordion-inner">
-									                  <ol  class='accordion-inner_listing' category_id='<?php echo $category['id']    ?>'    >
+									                  <ol  class='accordion-inner_listing' category_id='<?php echo $groups_category['id']    ?>'    >
 									                  	
 									                  	
-									                  	<?php foreach( $category['projects']  as  $project ){
+									                  	<?php foreach( $groups_category['projects']  as  $project ){
 									                  	
 									                  			if( $project['project_id'] != ''){?>
 									                  				
-														                  	<li 	 class="fancyZoom "  new='0'  href='#fancyZoom_div' group_id=<?php  echo $data['groups'][0]['id']   ?> category_id='<?php echo $category['id']    ?>'  legend='<?php echo $category['name']    ?>' project_id='<?php echo $project['project_id']    ?>' >
+														                  	<li 	 class="fancyZoom "  new='0'  href='#fancyZoom_div' group_id=<?php  echo $data['groups'][0]['id']   ?> group_category_id='<?php echo $groups_category['id']    ?>'  legend='<?php echo $groups_category['category_name']    ?>' project_id='<?php echo $project['project_id']    ?>' >
 														                  		<?php echo $project['project_name']    ?>
 														                  	</li>									                  			
 									                  			
@@ -336,7 +336,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 			
 			$.fn.attach_FancyZoom_AddAssetFormPopWindow = function() {
 				$(this).fancyZoom().css({cursor:'pointer'}).click(function(event) {
-					$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?group_id=' + $(this).attr('group_id') +  '&category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend')   + '&first_in_category=' + $(this).attr('first_in_category') )
+					$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?group_id=' + $(this).attr('group_id') +  '&groups_category_id=' + $(this).attr('groups_category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend')   + '&first_in_category=' + $(this).attr('first_in_category') )
 				});	
 				
 				return this;
@@ -345,7 +345,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 			$(document).ready(function() {
 				
 						$('.theList').click(function(event) {
-							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '/<?php  echo $data['groups'][0]['id']   ?>?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
+							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('groups_category_id')  + '/<?php  echo $data['groups'][0]['id']   ?>?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
 								
 								/*  FANCYZOOM THE RIGHT PANEL */
 							  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {
