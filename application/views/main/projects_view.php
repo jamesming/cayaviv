@@ -140,6 +140,9 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
           </div>
 
 					<style>
+						body{
+						background: url(http://griddle.it/960-12-30) repeat-y center top;  	
+							}
 					#left-spacer{
 					height:105px;
 					border:0px solid gray;
