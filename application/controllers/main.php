@@ -25,21 +25,59 @@ class Main extends CI_Controller {
 					array('data' => $data));	    
 	}
 
-	
-	public function add_asset(){
+	public function projects(){
 
-		$input_array = array(
-			'size-class' => 'span5',
-			'inputs' => array(
-			
-				array('input_name'=>'description', 'type' => 'textarea', 'label' => 'Description', 'placeholder' => 'What do you want?&nbsp;&nbsp;Why are you setting this specific intention?', 'rows' =>15),
-		
-			)
-		);
+		$categories = $this->query->get_categories_with_or_without_projects();
 		
 		$data = array(
+			'categories' => $categories
+		);
+
+		$this->load->view('main/projects_view',
+					array('data' => $data));	    
+	}	
+	
+	
+	public function add_asset(){
+		
+
+		if( $this->input->get('project_id') == -1 ){
+			
+			$project_id = $this->my_database_model->insert_table( $table = 'projects', $insert_what = array() );
+			
+			$new = 1;
+			
+		}else{
+			
+			$projects =   $this->query->get_projects_with_assets($where_array = array('projects.id' => $this->input->get('project_id')));
+
+			$project_id = $projects[0]['id'];
+			
+		};
+
+		$category_id = $this->input->get('category_id');
+		
+		$input_array = array(
+			'action' => 'index.php/ajax/update_asset',
+			'size-class' => 'span3',
+			'table' => 'projects',
+			'primary_key' => $project_id,
+			'inputs' => array(
+			
+				array('input_name'=>'category_id', 'type' => 'hidden', 'value' => $category_id, 'label' => '', 'placeholder' => ''),
+				array('input_name'=>'new', 'type' => 'hidden', 'value' => ( isset( $new ) ? 1:'0' ), 'label' => '', 'placeholder' => ''),
+				array('input_name'=>'name', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['name'] :'' ), 'label' => 'Name of Project', 'placeholder' => 'type in project name'),
+				array('input_name'=>'description', 'type' => 'textarea', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['description'] :'' ), 'label' => 'Description', 'placeholder' => 'Write in who, what, when and other details', 'rows' =>5),
+				array('input_name'=>'fileImage', 'type' => 'file', 'category_id' => $category_id, 'project_id' => $project_id,  'asset_type_id' => '1',  'label' => 'Upload an image', 'thumbnailbox' => 1, 'fileuploader_name' => 'upload_button_video_still', 'thumbnailbox-size' => array( 'width' => '160px', 'height' => '120px'), 'asset_id' => ( isset($projects['Video Stills']['assets'][0] ) ? $projects['Video Stills']['assets'][0]:'-1' ), 'allowable extensions' => 'jpg'),
+
+			)
+		);
+
+	
+		$data = array(
 			'input_array' =>  $input_array,
-			'record' =>  $this->uri->segment(3)
+			'legend' =>   $this->input->get('legend'),
+			'first_in_category' => $this->input->get('first_in_category')
 		);
 		
 		$this->load->view('main/add_asset_view',
@@ -47,6 +85,7 @@ class Main extends CI_Controller {
 		
 
 	}	
+
 
 
 function t(){
