@@ -165,25 +165,81 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 					#middle-vertical-line{
 						height: 429px;
 						border-left:3px solid gray;
+					}
+						
+						.square{
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramBWcopy.jpg");
+						height: 140px;
+						width: 140px;
+						}				
+						.square:hover{
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramcopy.jpg");
+						height: 140px;
+						width: 140px;
+						}
+						.square:active{
+						background-image: url("<?php   echo base_url()  ?>images/HeartSeedsdiagramPalecopy.jpg");
+						height: 140px;
+						width: 140px;
+						}
+
+						.left-top{
+						background-position: -5px -5px;
+						background-repeat: no-repeat;    		
+						}
+						.middle-top{
+						background-position: -146px -5px;
+						background-repeat: no-repeat;    		
+						}
+						.right-top{
+						background-position: -287px -5px;
+						background-repeat: no-repeat;    		
+						}
+						.left-middle{
+						background-position: -5px -146px;
+						background-repeat: no-repeat;    		
+						}
+						.middle-middle{
+						background-position: -146px -146px;
+						background-repeat: no-repeat;    		
+						}
+						.right-middle{
+						background-position: -287px -146px;
+						background-repeat: no-repeat;    		
+						}
+						.left-bottom{
+						background-position: -5px -287px;
+						background-repeat: no-repeat;    		
+						}
+						.middle-bottom{
+						background-position: -146px -287px;
+						background-repeat: no-repeat;    		
+						}
+						.right-bottom{
+						background-position: -287px -287px;
+						background-repeat: no-repeat;    		
+						}						
+    </style>
+						
+						
+						
 					</style>
 
 					<div  id='close_fancy_zoom'>
 					</div>
 			    <div  id='left-side-div' class="container">
-			    	<h1  id='work-label'>Work  <a  id='test' class='btn'   href='#jcrop_fancyZoom_div'   style='display:none'     >launch</a></h1>
+			    	<h1  id='work-label'>Prosperity<a  id='test' class='btn'   href='#jcrop_fancyZoom_div'   style='display:none'     >launch</a></h1>
 				    <div class="row">
 					    <div class="span2">
 					    	
-					    		<ul class="unstyled">
-					    			<li>Home</li>	
-					    			<li>Client Page</li>	
-					    			<li>Login</li>	
-					    		</ul>
-					    		<hr  id='left-spacer'  />
-					    		<ul class="unstyled">
-					    			<li>Pongo Address</li>	
-					    			<li>Contact Information</li>	
-					    		</ul>		    		
+									<div  class='squares '   >
+											<div  class='inside '  >
+											  		<div record=1 class=' left-top float_left' >
+											  			&nbsp;
+											  		</div>	
+											</div>
+	
+									</div>
 					    </div>
 					    
 					    <div class="span3">
@@ -304,7 +360,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						})
 			};
 	
-			$('#fancyZoom_div').setFancyZoomWindowSize(794, 450);
+			$('#fancyZoom_div').setFancyZoomWindowSize(794, 350);
 			
 			$.fn.attach_FancyZoom_AddAssetFormPopWindow = function() {
 				$(this).fancyZoom().css({cursor:'pointer'}).click(function(event) {
@@ -350,6 +406,12 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 					  $('ol.accordion-inner_listing li.fancyZoom').css({cursor:'pointer'}).attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {
 					  			
 					  });	
+					  
+					  
+						$('.squares .inside div').css({
+								cursor:'pointer'
+						}).addClass('square')
+					  
 					  
 			});
 			

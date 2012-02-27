@@ -163,6 +163,7 @@
 																			    },
 																					allowedExtensions: ['<?php echo $inputs['allowable extensions']    ?>'],
 													                onComplete: function(id, fileName, responseJSON){
+													                	//alert(JSON.stringify(responseJSON));
 													                	$('#<?php  echo $inputs['fileuploader_name']   ?> div.qq-upload-button').html('<i class="icon-upload"></i> Upload')
 													                	
 													                	<?php if( $inputs['asset_type_id'] == 1){?>
@@ -174,7 +175,7 @@
 												                		
 													                	
 													                },
-													                debug: true,
+													                debug: false,
 																					multiple: false
 													            }); 
 								      

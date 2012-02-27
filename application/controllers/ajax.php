@@ -159,10 +159,11 @@ class Ajax extends CI_Controller {
 		
 		// max file size in bytes
 		$sizeLimit = 10000 * 1024 * 1024;
+
 		
 		$uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
 		$result = $uploader->handleUpload($upload_path . '/');
-		
+
 		//sleep(3);
 
 		?>
