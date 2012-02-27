@@ -385,6 +385,10 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 						}).addClass('square')
 					  
 					  
+					  $('.brand').click(function(event) {
+					  			document.location = '<?php  echo base_url()   ?>';
+					  });	
+					  
 			});
 			
 
