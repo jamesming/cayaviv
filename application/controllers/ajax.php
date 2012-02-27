@@ -26,12 +26,15 @@ class Ajax extends CI_Controller {
 	public function projects(){
 		
 		$this->query->clear_table_of_empty_records_flagged_with_update_field_equals_0000( $table  = 'projects'); 
+		
+		$category_id = $this->uri->segment(3);		
+		
+		$groups_id = $this->uri->segment(4);
 
 		$legend = $this->input->get('legend');
 		
-		$category_id = $this->uri->segment(3);
-		
 		$projects = $this->query->get_projects_with_or_without_assets( $category_id );
+		
 		?>
 
 											<ul class="thumbnails ">
@@ -42,7 +45,7 @@ class Ajax extends CI_Controller {
 													
 													if( !in_array($project['asset_type_id'], array('2'))){?>
 												
-														  <li class="fancyZoom span2"  new='0'  href='#fancyZoom_div'  project_id='<?php echo $project['id']    ?>' category_id='<?php echo $category_id    ?>'  legend='<?php  echo $legend   ?>'>
+														  <li class="fancyZoom span2"  new='0'  href='#fancyZoom_div'  project_id='<?php echo $project['id']    ?>' groups_id=<?php echo $groups_id    ?> category_id='<?php echo $category_id    ?>'  legend='<?php  echo $legend   ?>'>
 														    <div class="thumbnail">
 														    	<div   style='text-align:center;
 														    								border:1px solid gray;
@@ -74,7 +77,7 @@ class Ajax extends CI_Controller {
 											  	
 											  	<?php } ?>
 											  	
-											  	class="fancyZoom span2"  new='1'  href='#fancyZoom_div'  project_id='-1' category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
+											  	class="fancyZoom span2"  new='1'  href='#fancyZoom_div'  project_id='-1' groups_id=<?php echo $groups_id    ?> category_id='<?php echo $category_id    ?>' legend='<?php  echo $legend   ?>'>
 											    <div   class="thumbnail">
 											    	<div  style='text-align:center;border:1px solid gray;height:120px'  ><br /><br />Add <?php echo $legend    ?>
 														</div>

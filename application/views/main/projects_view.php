@@ -141,7 +141,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 
 					<style>
 						body{
-						background: url(http://griddle.it/960-12-30) repeat-y center top;  	
+						//background: url(http://griddle.it/960-12-30) repeat-y center top;  	
 							}
 					#left-spacer{
 					height:105px;
@@ -249,7 +249,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 									                  	
 									                  			if( $project['project_id'] != ''){?>
 									                  				
-														                  	<li 	 class="fancyZoom "  new='0'  href='#fancyZoom_div'  category_id='<?php echo $category['id']    ?>'  legend='<?php echo $category['name']    ?>' project_id='<?php echo $project['project_id']    ?>' >
+														                  	<li 	 class="fancyZoom "  new='0'  href='#fancyZoom_div' group_id=<?php  echo $data['groups'][0]['id']   ?> category_id='<?php echo $category['id']    ?>'  legend='<?php echo $category['name']    ?>' project_id='<?php echo $project['project_id']    ?>' >
 														                  		<?php echo $project['project_name']    ?>
 														                  	</li>									                  			
 									                  			
@@ -336,7 +336,8 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 			
 			$.fn.attach_FancyZoom_AddAssetFormPopWindow = function() {
 				$(this).fancyZoom().css({cursor:'pointer'}).click(function(event) {
-					$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend')   + '&first_in_category=' + $(this).attr('first_in_category') )
+					alert($(this).attr('group_id'));
+					$('#iframe_fancyZoom_div').attr('src','<?php  echo base_url()   ?>index.php/main/add_asset?group_id=' + $(this).attr('group_id') +  '&category_id=' + $(this).attr('category_id') +  '&project_id=' + $(this).attr('project_id') + '&legend='+ $(this).attr('legend')   + '&first_in_category=' + $(this).attr('first_in_category') )
 				});	
 				
 				return this;
@@ -345,7 +346,7 @@ padding-top: 60px; /* 60px to make the container go all the way to the bottom of
 			$(document).ready(function() {
 				
 						$('.theList').click(function(event) {
-							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
+							$('#right-panel').load('<?php  echo base_url()   ?>index.php/ajax/projects/' +  $(this).attr('category_id')  + '/<?php  echo $data['groups'][0]['id']   ?>?legend=' + encodeURI($(this).attr('legend')) + '&random=' + Math.floor(Math.random()*99999999999), function() {
 								
 								/*  FANCYZOOM THE RIGHT PANEL */
 							  $('ul.thumbnails li.fancyZoom').css({cursor:'pointer'}).attach_FancyZoom_AddAssetFormPopWindow().click(function(event) {

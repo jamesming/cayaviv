@@ -59,6 +59,7 @@ class Main extends CI_Controller {
 		};
 
 		$category_id = $this->input->get('category_id');
+		$group_id = $this->input->get('group_id');
 		
 		$input_array = array(
 			'action' => 'index.php/ajax/update_asset',
@@ -67,6 +68,7 @@ class Main extends CI_Controller {
 			'primary_key' => $project_id,
 			'inputs' => array(
 			
+				array('input_name'=>'group_id', 'type' => 'hidden', 'value' => $group_id, 'label' => '', 'placeholder' => ''),
 				array('input_name'=>'category_id', 'type' => 'hidden', 'value' => $category_id, 'label' => '', 'placeholder' => ''),
 				array('input_name'=>'new', 'type' => 'hidden', 'value' => ( isset( $new ) ? 1:'0' ), 'label' => '', 'placeholder' => ''),
 				array('input_name'=>'name', 'type' => 'text', 'value' => ( isset( $projects[0]['name'] ) ? $projects[0]['name'] :'' ), 'label' => 'Name of Project', 'placeholder' => 'type in project name'),
